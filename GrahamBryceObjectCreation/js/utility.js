@@ -1,0 +1,7 @@
+class Utils {
+    constructor(){}
+    static sum(x, y){
+        console.log("static has been called");
+        return x+y;
+    }
+}

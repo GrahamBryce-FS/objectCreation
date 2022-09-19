@@ -1,0 +1,11 @@
+body{
+    background-color: azure;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}
+.output{
+    max-width: 200px;
+}
