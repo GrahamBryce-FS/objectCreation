@@ -31,14 +31,15 @@ class Main{
     }
     add(e){
         // this saves all the text fields into "data"
-        const data = document.querySelectorAll("input")
+        // const data = document.querySelectorAll("input")
+        let data = document.querySelectorAll("input")
         if(this.validateForm(data)){
             // this stops the submit button from refreshing
             e.preventDefault(); 
             let animal = document.querySelector("#animal").value;
             let petAge = document.querySelector("#name").value;
             let age = document.querySelector("#age").value;
-            const pet = new Pet(animal, petAge, age);
+            let pet = new Pet(animal, petAge, age);
             this.formData.push(pet);
             
 
@@ -51,10 +52,30 @@ class Main{
         }
     };
 
+// loop 
+
     display(e){
         e.preventDefault(); 
         document.querySelector("#displayAll").innerHTML = this.formData;
         console.log(this.formData);
+
+
+        this.formData.forEach(myFunction);
+        text = "";
+        function myFunction(item) {
+            console.log(item.animal);
+            console.log(item.petAge);
+            console.log(item.age);
+            
+            text  = text  + "<p>"+item.age+"</p>";
+        // sum += item; 
+        console.log(text);
+}
+document.querySelector("#displayAll").innerHTML = text;
+
+
+
+
     }
 // currently display button only prints object
 
