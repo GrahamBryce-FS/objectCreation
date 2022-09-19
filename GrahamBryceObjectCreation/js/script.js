@@ -14,10 +14,10 @@ class Pet{
         this.animal = animal; 
         this.petAge = petAge; 
         this.age = age; 
-
+        this.petting()
     }
     petting(){
-        return document.querySelector("#displayOther").innerHTML = (`wow both of you combined are ${Utils(petAge, age)} years old`);
+        return document.querySelector("#displayOther").innerHTML = (`wow both of you combined are ${Utils.sum(this.petAge, this.age)} years old!`);
     }
 };
 
@@ -26,15 +26,12 @@ class Main{
         console.log("demo started");
         this.formData = [];
         document.querySelector("#submit").addEventListener("click", e=>this.add(e));
-        document.querySelector("#displayBTN").addEventListener("click", e=>this.display(e));
-        
+        document.querySelector("#displayBTN").addEventListener("click", e=>this.display(e));  
     }
+    
     add(e){
-        // this saves all the text fields into "data"
-        // const data = document.querySelectorAll("input")
         let data = document.querySelectorAll("input")
         if(this.validateForm(data)){
-            // this stops the submit button from refreshing
             e.preventDefault(); 
             let animal = document.querySelector("#animal").value;
             let petAge = document.querySelector("#name").value;
@@ -52,14 +49,11 @@ class Main{
         }
     };
 
-// loop 
-
     display(e){
         e.preventDefault(); 
         // document.querySelector("#displayAll").innerHTML = this.formData;
         console.log(this.formData);
         let text = "";
-       
         this.formData.forEach(myFunction);
         
         function myFunction(item) {
@@ -67,17 +61,10 @@ class Main{
             console.log(item.petAge);
             console.log(item.age);
             
-            text  = text  + "<p>"+item.age+"</p>";
-        // sum += item; 
-        console.log(text);
-}
-document.querySelector("#displayAll").innerHTML = text;
-
-
-
-
-    }
-// currently display button only prints object
+            text  = text  + "<p> Animal Type: "+item.animal+"<br>Pet Age: "+item.petAge+" <br> Owner's Age: "+item.age+"</p>";
+        }
+        document.querySelector("#displayAll").innerHTML = text;
+    };
 
     validateForm(formData){
         let validate = true;
