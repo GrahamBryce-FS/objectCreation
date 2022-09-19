@@ -4,19 +4,18 @@
 // class has 3 properties and 1 method
 //// JS FORM STORAGE
 // must store form instances in an array
-// ^^^This is done so everything is displayed clearly when when you click the display button
-// separate method "add()" in Main classis called when the user clicks the add btn
 // separate method called "display()" is called when the user clicks the display all button
 
 
 class Pet{
-    constructor(animal, name, age){
+    constructor(animal, petAge, age){
         this.animal = animal; 
-        this.name = name;
-        this.age = age;
-        // this.animal = formData[0]; 
-        // this.name = formData[1];
-        // this.age = formData[2];
+        this.petAge = petAge; 
+        this.age = age; 
+
+    }
+    petting(){
+        return console.log(`wow both of you combined are ${Utils(petAge, age)} years old`);
     }
 };
 
@@ -32,26 +31,31 @@ class Main{
     add(e){
         // this saves all the text fields into "data"
         const data = document.querySelectorAll("input")
-        console.log(data);
         if(this.validateForm(data)){
+            // this stops the submit button from refreshing
             e.preventDefault(); 
-            // this pushes all input fields from data into the array above in main
-            data.forEach(e=>{
-                this.formData.push(e.value);
-            });
+            let animal = document.querySelector("#animal").value;
+            let petAge = document.querySelector("#name").value;
+            let age = document.querySelector("#age").value;
+            const pet = new Pet(animal, petAge, age);
+            this.formData.push(pet);
+            
+
             console.log(this.formData);
+
             console.log("form is validated");
-            document.querySelector("#addedConfirm").innerHTML = `Your Pet ${this.formData[1]} has been Added!`;
+            document.querySelector("#addedConfirm").innerHTML = `Your Pet has been Added!`;
         }else{
             console.log("form is not valid");
         }
     };
 
     display(e){
-        // idk what if statement goes here
-        // all pets need to be displayed 
-        document.querySelector("#displayAll").innerHTML = Pet;
+        e.preventDefault(); 
+        document.querySelector("#displayAll").innerHTML = this.formData;
     }
+// currently display button only prints object
+
 
     validateForm(formData){
         let validate = true;
@@ -67,6 +71,9 @@ class Main{
 (()=>{
     const main = new Main();
 })();
+
+
+
 
 
 
