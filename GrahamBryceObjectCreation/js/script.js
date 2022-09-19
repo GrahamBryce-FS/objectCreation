@@ -56,12 +56,12 @@ class Main{
 
     display(e){
         e.preventDefault(); 
-        document.querySelector("#displayAll").innerHTML = this.formData;
+        // document.querySelector("#displayAll").innerHTML = this.formData;
         console.log(this.formData);
-
-
+        let text = "";
+       
         this.formData.forEach(myFunction);
-        text = "";
+        
         function myFunction(item) {
             console.log(item.animal);
             console.log(item.petAge);
