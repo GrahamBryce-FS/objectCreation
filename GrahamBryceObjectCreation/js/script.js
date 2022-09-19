@@ -8,21 +8,22 @@
 
 
 class Pet{
+
     constructor(animal, petAge, age){
+        console.log("pet created");
         this.animal = animal; 
         this.petAge = petAge; 
         this.age = age; 
 
     }
     petting(){
-        return console.log(`wow both of you combined are ${Utils(petAge, age)} years old`);
+        return document.querySelector("#displayOther").innerHTML = (`wow both of you combined are ${Utils(petAge, age)} years old`);
     }
 };
 
 class Main{
     constructor(){
         console.log("demo started");
-        let pet = new Pet();
         this.formData = [];
         document.querySelector("#submit").addEventListener("click", e=>this.add(e));
         document.querySelector("#displayBTN").addEventListener("click", e=>this.display(e));
@@ -53,9 +54,9 @@ class Main{
     display(e){
         e.preventDefault(); 
         document.querySelector("#displayAll").innerHTML = this.formData;
+        console.log(this.formData);
     }
 // currently display button only prints object
-
 
     validateForm(formData){
         let validate = true;
